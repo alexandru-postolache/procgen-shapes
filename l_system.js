@@ -1,4 +1,4 @@
-const SEGMENT_LENGTH = 5;
+const SEGMENT_LENGTH = 10;
 const SEGMENT_ANGLE = 45;
 const RULE_F_KOCH_ISLANDS_START = "F-F-F-F"
 const RULE_F_KOCH_ISLANDS = "F-F+F+FF-F-F+F";
@@ -49,7 +49,7 @@ function main() {
     });
 
 
-    let result = applyTransformNthTimes(2, RULE_F_RECTANGLE_START, RULE_F_FILLED_MAZE);
+    let result = applyTransformNthTimes(3, RULE_F_RECTANGLE_START, RULE_F_MINI_RECTANGLES);
     draw(ctx, result)
 }
 
@@ -65,30 +65,16 @@ function draw(ctx, stringInput) {
             case "F":
                 switch (movement) {
                     case 1:
-                        coordinates = calculateCoordinates(x, y, 0);
-                        console.log("Mergem in fata, de la coordonatele",x,y,"la coordonatele",coordinates);
-                        y -= coordinates[1];
-                        //y -= SEGMENT_LENGTH;
+                        y -= SEGMENT_LENGTH;
                         break;
                     case 2:
-                        coordinates = calculateCoordinates(x, y, SEGMENT_ANGLE);
-                        console.log("Mergem la dreapta, de la coordonatele",x,y,"la coordonatele",coordinates);
-                        x += coordinates[0];
-                        y += coordinates[1];
-                        //x += SEGMENT_LENGTH;
+                        x += SEGMENT_LENGTH;
                         break;
                     case 3:
-                        coordinates = calculateCoordinates(x, y, 0);
-                        console.log("Mergem in spate, de la coordonatele",x,y,"la coordonatele",coordinates);
-                        y += coordinates[1];
-                        //y += SEGMENT_LENGTH;
+                        y += SEGMENT_LENGTH;
                         break;
                     case 4:
-                        coordinates = calculateCoordinates(x, y, 180-SEGMENT_ANGLE);
-                        console.log("Mergem la stanga, de la coordonatele",x,y,"la coordonatele",coordinates);
-                        x += coordinates[0];
-                        y += coordinates[1];
-                        // x -= SEGMENT_LENGTH;
+                        x -= SEGMENT_LENGTH;
                         break;
                 }
                 break;
